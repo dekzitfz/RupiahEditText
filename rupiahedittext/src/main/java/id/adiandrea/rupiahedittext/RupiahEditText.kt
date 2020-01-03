@@ -2,22 +2,37 @@ package id.adiandrea.rupiahedittext
 
 import android.content.Context
 import android.text.Editable
+import android.text.InputFilter
+import android.text.InputFilter.LengthFilter
+import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
-import androidx.appcompat.widget.AppCompatEditText
+import android.widget.EditText
 import java.text.NumberFormat
 import java.util.*
 
 
-class RupiahEditText @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : AppCompatEditText(context, attrs, defStyleAttr) {
+class RupiahEditText: EditText {
 
     var editText: RupiahEditText = this
 
+    constructor(context: Context) : this(context, null){
+        init()
+    }
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0){
+        init()
+    }
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        init()
+    }
+
     fun init() {
+        this.setText("0")
+        this.setRawInputType(InputType.TYPE_CLASS_NUMBER)
+        this.filters = arrayOf<InputFilter>(
+            LengthFilter(17)
+        )
+
         this.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
 
