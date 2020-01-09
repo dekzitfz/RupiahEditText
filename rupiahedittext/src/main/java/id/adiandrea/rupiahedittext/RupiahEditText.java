@@ -31,7 +31,7 @@ public class RupiahEditText extends AppCompatEditText {
     }
 
     public void init(){
-
+        editText.setInputType(InputType.TYPE_CLASS_NUMBER);
         editText.setText("0");
         editText.setRawInputType(InputType.TYPE_CLASS_NUMBER);
 
