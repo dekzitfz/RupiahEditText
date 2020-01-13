@@ -16,14 +16,13 @@ allprojects {
 
 App level `build.gradle`
 ```groovy
-implementation 'com.github.dekzitfz:RupiahEditText:0.0.1'
+implementation 'com.github.dekzitfz:RupiahEditText:0.0.2'
 ```
 
 Add To Your Layout
 ```xml
 <id.adiandrea.rupiahedittext.RupiahEditText
         android:id="@+id/rupiah"
-        android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 ```
