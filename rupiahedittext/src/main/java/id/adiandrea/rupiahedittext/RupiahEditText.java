@@ -2,6 +2,7 @@ package id.adiandrea.rupiahedittext;
 
 import android.content.Context;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -34,6 +35,7 @@ public class RupiahEditText extends AppCompatEditText {
         editText.setInputType(InputType.TYPE_CLASS_NUMBER);
         editText.setText("0");
         editText.setRawInputType(InputType.TYPE_CLASS_NUMBER);
+        editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(19)});
 
         this.addTextChangedListener(new TextWatcher() {
             @Override
