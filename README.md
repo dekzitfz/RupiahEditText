@@ -16,7 +16,7 @@ allprojects {
 
 App level `build.gradle`
 ```groovy
-implementation 'com.github.dekzitfz:RupiahEditText:0.0.2'
+implementation 'com.github.dekzitfz:RupiahEditText:0.0.3'
 ```
 
 Add To Your Layout
