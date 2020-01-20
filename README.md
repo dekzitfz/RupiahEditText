@@ -1,5 +1,7 @@
 # RupiahEditText
 
+[![](https://jitpack.io/v/dekzitfz/RupiahEditText.svg)](https://jitpack.io/#dekzitfz/RupiahEditText)
+
 An auto-formatted edittext android to Indonesia Rupiah Currency.
 
 ### Add to you android project:
