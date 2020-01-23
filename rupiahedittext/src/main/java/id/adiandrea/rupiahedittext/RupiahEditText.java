@@ -11,6 +11,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 
 import java.text.NumberFormat;
 import java.util.Locale;
+import java.util.Objects;
 
 public class RupiahEditText extends AppCompatEditText {
 
@@ -29,6 +30,10 @@ public class RupiahEditText extends AppCompatEditText {
     public RupiahEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
+    }
+
+    public long getValue(){
+        return Long.parseLong(Objects.requireNonNull(editText.getText()).toString().replace(".", ""));
     }
 
     public void init(){
