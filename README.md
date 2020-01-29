@@ -29,7 +29,7 @@ Add To Your Layout
         android:layout_height="wrap_content"/>
 ```
 
-### TODO
-
-- add to String function
-- add to Long function
+Get the value as Long
+```kotlin
+yourRupiahEditText.value
+```
