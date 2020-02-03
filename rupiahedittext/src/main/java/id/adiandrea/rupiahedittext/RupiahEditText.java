@@ -86,6 +86,36 @@ public class RupiahEditText extends AppCompatEditText {
         });
     }
 
+    String validateValue(String inputed){
+        if(!inputed.equals("")){
+            if(inputed.substring(0, 1).equals("0")){
+                //angka pertama 0
+                if(inputed.length() > 1){
+                    //panjang angka lebih dari 1
+                    if(inputed.substring(0, 1).equals("0") && !inputed.substring(1, 2).equals("0")){
+                        //angka pertama 0 dan angka kedua tidak 0, hilangkan angka 0 dikiri
+                        return formatCurrency(Long.parseLong(new StringBuilder(inputed).deleteCharAt(0).toString()));
+                    }else if(!inputed.substring(0, 1).equals("0")){
+                        //angka pertama tidak 0
+                        return formatCurrency(Long.parseLong(inputed));
+                    }else{
+                        //angka kedua 0
+                        return "0";
+                    }
+                }else{
+                    //panjang angka adalah 1
+                    return formatCurrency(Long.parseLong(inputed));
+                }
+            }else{
+                //angka pertama tidak 0
+                String cleanString = inputed.replace(".", "");
+                return formatCurrency(Long.parseLong(cleanString));
+            }
+        }else{
+            return "0";
+        }
+    }
+
     private String formatCurrency(Long amount) {
         NumberFormat format = NumberFormat.getNumberInstance(Locale.GERMANY);
         return format.format(amount);
