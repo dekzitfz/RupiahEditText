@@ -31,5 +31,9 @@ Add To Your Layout
 
 Get the value as Long
 ```kotlin
-yourRupiahEditText.value
+yourRupiahEditText.value //kotlin
+```
+
+```java
+yourRupiahEditText.getValue(); //java
 ```
