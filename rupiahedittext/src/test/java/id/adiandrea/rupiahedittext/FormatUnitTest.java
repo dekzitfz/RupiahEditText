@@ -23,4 +23,9 @@ public class FormatUnitTest {
         assertEquals("0", editText.validateValue("0"));
     }
 
+    @Test
+    public void testThousands(){
+        assertEquals("1.234", editText.validateValue("1234"));
+    }
+
 }
