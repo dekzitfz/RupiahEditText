@@ -14,7 +14,7 @@ An auto-formatted edittext android to Indonesia Rupiah Currency.
 - support for adding IDR / Rp in front of number
 - have request? [write an issue](https://github.com/dekzitfz/RupiahEditText/issues/new)
 
-### Add to you android project:
+### Add to your android project:
 
 Project level `build.gradle`
 ```groovy
