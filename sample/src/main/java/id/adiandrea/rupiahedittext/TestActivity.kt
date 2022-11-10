@@ -3,16 +3,17 @@ package id.adiandrea.rupiahedittext
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import id.adiandrea.rupiahinput.R
-import kotlinx.android.synthetic.main.layout_tes.*
+import id.adiandrea.rupiahinput.databinding.LayoutTesBinding
 
 class TestActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.layout_tes)
+        val binding = LayoutTesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        btn.setOnClickListener {
-            Toast.makeText(this, rupiah.value.toString(), Toast.LENGTH_SHORT).show()
+        binding.btn.setOnClickListener {
+            Toast.makeText(this, binding.rupiah.value.toString(), Toast.LENGTH_SHORT).show()
         }
     }
 }
