@@ -1,31 +1,26 @@
-package id.adiandrea.rupiahedittext;
+package id.adiandrea.rupiahedittext
 
-import android.content.Context;
-import android.os.Build;
+import android.content.Context
+import android.os.Build
+import androidx.test.core.app.ApplicationProvider
+import org.junit.Assert
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
-
-import androidx.test.core.app.ApplicationProvider;
-import static org.junit.Assert.assertEquals;
-
-@Config(sdk = Build.VERSION_CODES.O_MR1)
-@RunWith(RobolectricTestRunner.class)
-public class FormatUnitTest {
-
-    private Context context = ApplicationProvider.getApplicationContext();
-    private RupiahEditText editText = new RupiahEditText(context);
-
+@Config(sdk = [Build.VERSION_CODES.O_MR1])
+@RunWith(RobolectricTestRunner::class)
+class FormatUnitTest {
+    private val context = ApplicationProvider.getApplicationContext<Context>()
+    private val editText = RupiahEditText(context)
     @Test
-    public void test0Inputed(){
-        assertEquals("0", editText.validateValue("0"));
+    fun test0Inputed() {
+        Assert.assertEquals("0", editText.validateValue("0"))
     }
 
     @Test
-    public void testThousands(){
-        assertEquals("1.234", editText.validateValue("1234"));
+    fun testThousands() {
+        Assert.assertEquals("1.234", editText.validateValue("1234"))
     }
-
 }
