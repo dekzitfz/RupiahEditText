@@ -23,4 +23,9 @@ class FormatUnitTest {
     fun testThousands() {
         Assert.assertEquals("1.234", editText.validateValue("1234"))
     }
+
+    @Test
+    fun testZeroOnTheLeft() {
+        Assert.assertEquals("1.234", editText.validateValue("01234"))
+    }
 }
