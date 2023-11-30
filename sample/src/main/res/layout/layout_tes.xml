@@ -8,6 +8,9 @@
 
     <id.adiandrea.rupiahedittext.RupiahEditText
         android:id="@+id/rupiah"
+        android:background="@drawable/bg_textfield"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="48dp"
