@@ -1,0 +1,33 @@
+name: Testing
+
+on:
+  push:
+    branches:
+      - dev
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Generate Release APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Run Tests
+        run: ./gradlew test
+
+      - name: Upload Test Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test-Reports
+          path: app/build/reports
+        if: always()
