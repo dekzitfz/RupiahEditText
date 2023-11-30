@@ -1,6 +1,9 @@
 name: Testing
 
 on:
+  pull_request:
+    branches:
+      - master
   push:
     branches:
       - dev
@@ -8,8 +11,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    name: Generate Release APK
+  test:
+    name: Unit Test
     runs-on: ubuntu-latest
 
     steps:
@@ -29,5 +32,28 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Test-Reports
-          path: app/build/reports
+          path: rupiahedittext/build/reports
         if: always()
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: setup version tag
+        uses: oprypin/find-latest-tag@v1
+        with:
+          repository: dekzitfz/RupiahEditText
+          releases-only: false
+        id: versiontag
+      - run: echo "versiontag is at ${{ steps.versiontag.outputs.tag }}"
+
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: Create a Release
+        uses: elgohr/Github-Release-Action@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        with:
+          title: ${{ steps.versiontag.outputs.tag }}
