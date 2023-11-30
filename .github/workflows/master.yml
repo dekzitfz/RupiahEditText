@@ -52,3 +52,5 @@ jobs:
 
       - name: Create a Release
         uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.versiontag.outputs.tag }}
