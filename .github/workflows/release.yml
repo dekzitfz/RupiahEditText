@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  workflow_call:
+
+jobs:
+  release:
+    name: Release To Github
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: setup version tag
+        uses: oprypin/find-latest-tag@v1
+        with:
+          repository: dekzitfz/RupiahEditText
+          releases-only: false
+        id: versiontag
+      - run: echo "versiontag is at ${{ steps.versiontag.outputs.tag }}"
+
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: Create a Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.versiontag.outputs.tag }}
+          bodyFile: "release-changelog.md"
+          allowUpdates: true

@@ -1,0 +1,22 @@
+name: Build
+
+on:
+  workflow_call:
+
+jobs:
+  test:
+    name: Build Source
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: build
+        run: ./gradlew :rupiahedittext:assembleDebug
