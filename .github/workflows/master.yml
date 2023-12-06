@@ -1,56 +1,24 @@
-name: Testing
-
+name: CI/CD
 on:
   push:
-    branches:
-      - master
-
+    branches: [ "master" ]
   workflow_dispatch:
-
 jobs:
-  test:
-    name: Unit Test
+  actions:
     runs-on: ubuntu-latest
-
     steps:
-      - name: checkout repo
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: setup JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          java-version: '17'
+  step-1:
+    name: Step 1
+    uses: ./.github/workflows/test.yml
 
-      - name: Run Tests
-        run: ./gradlew test
+  step-2:
+    needs: step-1
+    name: Step 2
+    uses: ./.github/workflows/build.yml
 
-      - name: Upload Test Reports
-        uses: actions/upload-artifact@v3
-        with:
-          name: Test-Reports
-          path: rupiahedittext/build/reports
-        if: always()
-
-  release:
-    name: Release
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-      - name: setup version tag
-        uses: oprypin/find-latest-tag@v1
-        with:
-          repository: dekzitfz/RupiahEditText
-          releases-only: false
-        id: versiontag
-      - run: echo "versiontag is at ${{ steps.versiontag.outputs.tag }}"
-
-      - name: checkout repo
-        uses: actions/checkout@v3
-
-      - name: Create a Release
-        uses: ncipollo/release-action@v1
-        with:
-          tag: ${{ steps.versiontag.outputs.tag }}
+  step-3:
+    needs: step-2
+    name: Step 3
+    uses: ./.github/workflows/release.yml

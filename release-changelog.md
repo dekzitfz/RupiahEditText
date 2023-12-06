@@ -1,0 +1,3 @@
+- AGP to 8.2.0
+- upgrade to version catalogs
+- migrate gradle groovy to kotlin

@@ -1,36 +1,19 @@
-name: Testing
-
+name: CI/CD
 on:
-  pull_request:
-    branches:
-      - master
   push:
-    branches:
-      - dev
-
+    branches: [ "dev" ]
   workflow_dispatch:
-
 jobs:
-  test:
-    name: Unit Test
+  actions:
     runs-on: ubuntu-latest
-
     steps:
-      - name: checkout repo
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: setup JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          java-version: '17'
+  step-1:
+    name: Step 1
+    uses: ./.github/workflows/test.yml
 
-      - name: Run Tests
-        run: ./gradlew test
-
-      - name: Upload Test Reports
-        uses: actions/upload-artifact@v3
-        with:
-          name: Test-Reports
-          path: rupiahedittext/build/reports
-        if: always()
+  step-2:
+    needs: step-1
+    name: Step 2
+    uses: ./.github/workflows/build.yml
