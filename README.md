@@ -10,13 +10,11 @@ An auto-formatted edittext android to Indonesia Rupiah Currency.
 - no 0 (zero) in front of number
 
 ### TODO
-
-- support for adding IDR / Rp in front of number
 - have request? [write an issue](https://github.com/dekzitfz/RupiahEditText/issues/new)
 
 ### Add to your android project:
 
-Project level `build.gradle`
+#### 1. Update Project level `build.gradle`
 ```groovy
 allprojects {
     repositories {
@@ -26,12 +24,43 @@ allprojects {
 }
 ```
 
-App level `build.gradle`
-```groovy
-implementation 'com.github.dekzitfz:RupiahEditText:(insert latest version)'
+Or if you already using Kotlin DSL
+```kotlin
+pluginManagement {
+    repositories {
+        ...
+        maven { url = uri("https://jitpack.io") }
+    }
+}
 ```
 
-Add To Your Layout
+#### 2. Update App level `build.gradle` (Choose your version)
+
+##### Groovy Version
+```groovy
+//build.gradle
+implementation 'com.github.dekzitfz:RupiahEditText:0.1.1'
+```
+
+##### Version Catalogs Version
+
+```toml
+[versions]
+rupiahedittext = "0.1.1"
+
+[libraries]
+rupiah-edittext = { group = "com.github.dekzitfz", name = "RupiahEditText", version.ref = "rupiahedittext" }
+```
+
+```kotlin
+//build.gradle.kts (App Level)
+dependencies {
+    ...
+    implementation(libs.rupiah.edittext)
+}
+```
+
+#### 3. Add To Your Layout (XML)
 ```xml
 <id.adiandrea.rupiahedittext.RupiahEditText
         android:id="@+id/rupiah"
@@ -39,7 +68,7 @@ Add To Your Layout
         android:layout_height="wrap_content"/>
 ```
 
-Get the value as Long
+Get the value as `Long`
 ```kotlin
 yourRupiahEditText.value //kotlin
 ```
