@@ -44,7 +44,7 @@ implementation 'com.github.dekzitfz:RupiahEditText:0.1.1'
 
 ##### Version Catalogs Version
 ```toml
-//libs.versions.toml
+# libs.versions.toml
 [versions]
 rupiahedittext = "0.1.1"
 
