@@ -20,7 +20,7 @@ jobs:
       - run: echo "versiontag is at ${{ steps.versiontag.outputs.tag }}"
 
       - name: checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Create a Release
         uses: ncipollo/release-action@v1
