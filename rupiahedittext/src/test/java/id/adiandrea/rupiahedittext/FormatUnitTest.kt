@@ -20,6 +20,11 @@ class FormatUnitTest {
     }
 
     @Test
+    fun testEmptyInputReturnsZero() {
+        Assert.assertEquals("0", editText.validateValue(""))
+    }
+
+    @Test
     fun testThousands() {
         Assert.assertEquals("1.234", editText.validateValue("1234"))
     }
