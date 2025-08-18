@@ -11,7 +11,6 @@ import android.util.Log
 import androidx.appcompat.widget.AppCompatEditText
 import java.text.NumberFormat
 import java.util.Locale
-import java.util.Objects
 
 class RupiahEditText : AppCompatEditText {
     private val editText = this
@@ -31,7 +30,7 @@ class RupiahEditText : AppCompatEditText {
     }
 
     val value: Long
-        get() = Objects.requireNonNull(editText.text).toString().replace(".", "").toLong()
+        get() = editText.text.toString().replace(".", "").toLongOrNull() ?: 0L
 
     private fun init() {
         editText.inputType = InputType.TYPE_CLASS_NUMBER
